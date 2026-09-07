@@ -6,38 +6,42 @@ import org.openqa.selenium.WebDriver;
 
 public class RegistrationPage extends BasePage {
 
+
+    By firstName = By.id("customer.firstName");
+    By lastName = By.id("customer.lastName");
+    By address = By.id("customer.address.street");
+    By city = By.id("customer.address.city");
+    By state = By.id("customer.address.state");
+    By zipCode = By.id("customer.address.zipCode");
+    By phone = By.id("customer.phoneNumber");
+    By ssn = By.id("customer.ssn");
+    By username = By.id("customer.username");
+    By password = By.id("customer.password");
+    By confirmPassword = By.id("repeatedPassword");
+
+    By registerButton = By.xpath("//input[@value='Register']");
+
+    By errorMessage = By.cssSelector(".error");
+
+    By welcomeMessage = By.cssSelector("#rightPanel h1");
+
+    By successMessage =
+            By.xpath("//p[contains(text(),'Your account was created successfully')]");
+
+
     public RegistrationPage(WebDriver driver) {
         super(driver);
     }
 
-    private By registerLink = By.linkText("Register");
 
-    private By firstName = By.id("customer.firstName");
-    private By lastName = By.id("customer.lastName");
-    private By address = By.id("customer.address.street");
-    private By city = By.id("customer.address.city");
-    private By state = By.id("customer.address.state");
-    private By zipCode = By.id("customer.address.zipCode");
-    private By phone = By.id("customer.phoneNumber");
-    private By ssn = By.id("customer.ssn");
-    private By username = By.id("customer.username");
-    private By password = By.id("customer.password");
-    private By confirmPassword = By.id("repeatedPassword");
-
-    private By registerButton = By.cssSelector("input.button[value='Register']");
-
-    private By welcomeMessage = By.cssSelector("#rightPanel h1");
-    private By successMessage = By.cssSelector("#rightPanel p");
-
-
-    // Open Registration Page
     public RegistrationPage clickRegisterLink() {
-        click(registerLink);
+
+        driver.findElement(By.linkText("Register")).click();
+
         return this;
     }
 
 
-    // Fill Registration Form
     public RegistrationPage fillRegistrationForm(
             String firstNameValue,
             String lastNameValue,
@@ -49,39 +53,78 @@ public class RegistrationPage extends BasePage {
             String ssnValue,
             String usernameValue,
             String passwordValue,
-            String confirmPasswordValue
-    ) {
-        type(firstName, firstNameValue);
-        type(lastName, lastNameValue);
-        type(address, addressValue);
-        type(city, cityValue);
-        type(state, stateValue);
-        type(zipCode, zipCodeValue);
-        type(phone, phoneValue);
-        type(ssn, ssnValue);
-        type(username, usernameValue);
-        type(password, passwordValue);
-        type(confirmPassword, confirmPasswordValue);
+            String confirmPasswordValue) {
+
+
+        driver.findElement(firstName).sendKeys(firstNameValue);
+
+        driver.findElement(lastName).sendKeys(lastNameValue);
+
+        driver.findElement(address).sendKeys(addressValue);
+
+        driver.findElement(city).sendKeys(cityValue);
+
+        driver.findElement(state).sendKeys(stateValue);
+
+        driver.findElement(zipCode).sendKeys(zipCodeValue);
+
+        driver.findElement(phone).sendKeys(phoneValue);
+
+        driver.findElement(ssn).sendKeys(ssnValue);
+
+        driver.findElement(username).sendKeys(usernameValue);
+
+        driver.findElement(password).sendKeys(passwordValue);
+
+        driver.findElement(confirmPassword)
+                .sendKeys(confirmPasswordValue);
+
 
         return this;
     }
 
 
-    // Click Register Button
     public RegistrationPage clickRegisterButton() {
-        click(registerButton);
+
+        driver.findElement(registerButton).click();
+
         return this;
     }
 
 
-    // Get Welcome Message
+    public boolean isErrorDisplayed() {
+
+        return driver.findElements(errorMessage).size() > 0;
+    }
+
+
+    public boolean isRegistrationSuccessful() {
+
+        return driver.findElements(welcomeMessage).size() > 0;
+    }
+
+
     public String getWelcomeMessage() {
-        return getText(welcomeMessage);
+
+        return driver.findElement(welcomeMessage).getText();
     }
 
 
-    // Get Success Message
     public String getSuccessMessage() {
-        return getText(successMessage);
+
+        return driver.findElement(successMessage).getText();
     }
+
+
+    public String getErrorMessage() {
+
+        if(driver.findElements(errorMessage).size() > 0){
+
+            return driver.findElement(errorMessage).getText();
+
+        }
+
+        return "";
+    }
+
 }
