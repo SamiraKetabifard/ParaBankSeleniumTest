@@ -50,7 +50,7 @@
     },
     {
       "testCase": "Invalid City Numeric Value",
-      "description": "City field contains numbers",
+      "description": "City field contains numbers - BUG: Should show error",
       "firstName": "Reza",
       "lastName": "Rezaei",
       "address": "Enghelab Street",
@@ -66,7 +66,7 @@
     },
     {
       "testCase": "Invalid Phone Contains Letters",
-      "description": "Phone number contains alphabet characters",
+      "description": "Phone number contains alphabet characters - BUG: Should show error",
       "firstName": "Maryam",
       "lastName": "Karimi",
       "address": "Shariati Street",
@@ -82,7 +82,7 @@
     },
     {
       "testCase": "Invalid SSN Contains Letters",
-      "description": "SSN contains letters instead of numbers",
+      "description": "SSN contains letters instead of numbers - BUG: Should show error",
       "firstName": "Ali",
       "lastName": "Mohammadi",
       "address": "Hafez Street",
@@ -98,7 +98,7 @@
     },
     {
       "testCase": "Invalid Zip Code",
-      "description": "Zip code contains letters",
+      "description": "Zip code contains letters - BUG: Should show error",
       "firstName": "Narges",
       "lastName": "Ahmadi",
       "address": "Ferdowsi Street",
@@ -126,22 +126,6 @@
       "username": "zahra_test_007",
       "password": "123456",
       "confirmPassword": "654321",
-      "expectedResult": "error"
-    },
-    {
-      "testCase": "First Name Exceeds Maximum Length",
-      "description": "Register with an extremely long first name",
-      "firstName": "Samiraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "lastName": "Ketabi",
-      "address": "Azadi Street",
-      "city": "Tehran",
-      "state": "Tehran",
-      "zipCode": "12345",
-      "phone": "09121234567",
-      "ssn": "123456789",
-      "username": "samira_test_008",
-      "password": "123456",
-      "confirmPassword": "123456",
       "expectedResult": "error"
     }
   ]

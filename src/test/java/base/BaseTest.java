@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
 
-    protected WebDriver driver;
+    public static WebDriver driver;
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() {
@@ -19,5 +19,8 @@ public class BaseTest {
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
         DriverSetUp.quit();
+    }
+    public WebDriver getDriver() {
+        return driver;
     }
 }

@@ -23,11 +23,10 @@ public class RegistrationPage extends BasePage {
 
     By errorMessage = By.cssSelector(".error");
 
-    By welcomeMessage = By.cssSelector("#rightPanel h1");
-
     By successMessage =
             By.xpath("//p[contains(text(),'Your account was created successfully')]");
-
+    By usernameError =
+            By.id("customer.username.errors");
 
     public RegistrationPage(WebDriver driver) {
         super(driver);
@@ -36,7 +35,7 @@ public class RegistrationPage extends BasePage {
 
     public RegistrationPage clickRegisterLink() {
 
-        driver.findElement(By.linkText("Register")).click();
+        click(By.linkText("Register"));
 
         return this;
     }
@@ -56,28 +55,17 @@ public class RegistrationPage extends BasePage {
             String confirmPasswordValue) {
 
 
-        driver.findElement(firstName).sendKeys(firstNameValue);
-
-        driver.findElement(lastName).sendKeys(lastNameValue);
-
-        driver.findElement(address).sendKeys(addressValue);
-
-        driver.findElement(city).sendKeys(cityValue);
-
-        driver.findElement(state).sendKeys(stateValue);
-
-        driver.findElement(zipCode).sendKeys(zipCodeValue);
-
-        driver.findElement(phone).sendKeys(phoneValue);
-
-        driver.findElement(ssn).sendKeys(ssnValue);
-
-        driver.findElement(username).sendKeys(usernameValue);
-
-        driver.findElement(password).sendKeys(passwordValue);
-
-        driver.findElement(confirmPassword)
-                .sendKeys(confirmPasswordValue);
+        type(firstName, firstNameValue);
+        type(lastName, lastNameValue);
+        type(address, addressValue);
+        type(city, cityValue);
+        type(state, stateValue);
+        type(zipCode, zipCodeValue);
+        type(phone, phoneValue);
+        type(ssn, ssnValue);
+        type(username, usernameValue);
+        type(password, passwordValue);
+        type(confirmPassword, confirmPasswordValue);
 
 
         return this;
@@ -86,7 +74,7 @@ public class RegistrationPage extends BasePage {
 
     public RegistrationPage clickRegisterButton() {
 
-        driver.findElement(registerButton).click();
+        click(registerButton);
 
         return this;
     }
@@ -100,31 +88,30 @@ public class RegistrationPage extends BasePage {
 
     public boolean isRegistrationSuccessful() {
 
-        return driver.findElements(welcomeMessage).size() > 0;
-    }
-
-
-    public String getWelcomeMessage() {
-
-        return driver.findElement(welcomeMessage).getText();
+        return driver.findElements(successMessage).size() > 0;
     }
 
 
     public String getSuccessMessage() {
 
-        return driver.findElement(successMessage).getText();
+        return getText(successMessage);
     }
 
 
     public String getErrorMessage() {
 
-        if(driver.findElements(errorMessage).size() > 0){
+        if(isErrorDisplayed()) {
 
-            return driver.findElement(errorMessage).getText();
+            return getText(errorMessage);
 
         }
 
         return "";
+    }
+    public boolean isUsernameErrorDisplayed() {
+
+        return driver.findElements(usernameError).size() > 0;
+
     }
 
 }
