@@ -19,16 +19,13 @@ public class TestListener implements ITestListener {
                 (BaseTest) result.getInstance();
 
 
-
         String testName =
                 result.getMethod()
                         .getMethodName();
 
 
-
         Object[] parameters =
                 result.getParameters();
-
 
 
         // اگر DataProvider داشت
@@ -49,17 +46,14 @@ public class TestListener implements ITestListener {
             }
         }
 
-        // ذخیره PNG
-        ScreenshotUtil.saveScreenshot(
-                test.getDriver(),
-                testName
-        );
 
-        // Attach به Allure
+        System.out.println("Test Failed: " + testName);
+
+
+        // فقط Attach به Allure
         ScreenshotUtil.attachScreenshot(
                 test.getDriver()
         );
-
 
     }
 }

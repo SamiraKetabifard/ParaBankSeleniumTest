@@ -1,79 +1,34 @@
 package utils;
 
-import io.qameta.allure.Attachment;
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.*;
-import java.io.File;
-import java.io.IOException;
+import io.qameta.allure.Allure;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+
+import java.io.ByteArrayInputStream;
 
 public class ScreenshotUtil {
 
 
-    public static String saveScreenshot(
-            WebDriver driver,
-            String testName) {
+    public static void attachScreenshot(WebDriver driver) {
 
-
-        TakesScreenshot ts =
-                (TakesScreenshot) driver;
-
-
-        File source =
-                ts.getScreenshotAs(OutputType.FILE);
-
-
-        File folder =
-                new File(
-                        System.getProperty("user.dir")
-                                + "/target/screenshots"
-                );
-
-
-        if (!folder.exists()) {
-            folder.mkdirs();
+        if(driver == null){
+            System.out.println("Driver is null");
+            return;
         }
 
 
-        String fileName =
-                testName
-                        + "_"
-                        + System.currentTimeMillis()
-                        + ".png";
+        byte[] screenshot =
+                ((TakesScreenshot) driver)
+                        .getScreenshotAs(OutputType.BYTES);
 
 
-        File destination =
-                new File(folder, fileName);
+        Allure.addAttachment(
+                "Failure Screenshot",
+                "image/png",
+                new ByteArrayInputStream(screenshot),
+                ".png"
+        );
 
-
-        try {
-
-            FileUtils.copyFile(
-                    source,
-                    destination
-            );
-
-        } catch (IOException e) {
-
-            e.printStackTrace();
-        }
-
-
-        return destination.getAbsolutePath();
-    }
-
-
-
-    @Attachment(
-            value = "Failure Screenshot",
-            type = "image/png"
-    )
-    public static byte[] attachScreenshot(
-            WebDriver driver) {
-
-
-        return ((TakesScreenshot)driver)
-                .getScreenshotAs(
-                        OutputType.BYTES
-                );
     }
 }
