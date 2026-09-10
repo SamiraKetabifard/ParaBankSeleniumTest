@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 
 public class RegistrationPage extends BasePage {
 
-
     By firstName = By.id("customer.firstName");
     By lastName = By.id("customer.lastName");
     By address = By.id("customer.address.street");
@@ -39,7 +38,6 @@ public class RegistrationPage extends BasePage {
 
         return this;
     }
-
 
     public RegistrationPage fillRegistrationForm(
             String firstNameValue,

@@ -12,7 +12,6 @@ public class BaseTest {
 
     public static WebDriver driver;
 
-
     @BeforeMethod(alwaysRun = true)
     public void setUp() {
 
@@ -20,26 +19,15 @@ public class BaseTest {
 
         driver.get(ConfigReader.getUrl());
     }
-
-
     @AfterMethod(alwaysRun = true)
     public void tearDown(ITestResult result) {
 
-
-        // اگر تست Fail شد، عکس را به Allure اضافه کن
         if (result.getStatus() == ITestResult.FAILURE) {
 
             ScreenshotUtil.attachScreenshot(driver);
-
         }
-
-
-        // بستن مرورگر
         DriverSetUp.quit();
-
     }
-
-
     public WebDriver getDriver() {
 
         return driver;

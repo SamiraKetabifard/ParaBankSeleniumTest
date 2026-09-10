@@ -17,29 +17,22 @@ public class RegistrationTest extends BaseTest {
 
     private RegistrationPage registrationPage;
 
-
     @BeforeMethod
     public void setupPage() {
 
         registrationPage = new RegistrationPage(driver);
 
     }
-
-
     private String generateUsername() {
 
         return "user" + System.currentTimeMillis();
 
     }
-
-
     @DataProvider(name = "registerData")
     public Object[][] registerData() {
 
-
         JsonUtils json =
                 new JsonUtils("src/test/resources/Register.json");
-
 
         List<Map<String,Object>> data =
                 json.getRegisterData();
@@ -54,12 +47,8 @@ public class RegistrationTest extends BaseTest {
             result[i][0] = data.get(i);
 
         }
-
-
         return result;
     }
-
-
 
     @Test(dataProvider = "registerData")
     public void verifyRegistration(Map<String,Object> data) {
@@ -69,8 +58,6 @@ public class RegistrationTest extends BaseTest {
                 "Running test case: "
                         + data.get("testCase")
         );
-
-
         registrationPage
                 .clickRegisterLink()
                 .fillRegistrationForm(
@@ -87,17 +74,11 @@ public class RegistrationTest extends BaseTest {
                         generateUsername(),
 
                         data.get("password").toString(),
-                        data.get("confirmPassword").toString()
-
-                )
+                        data.get("confirmPassword").toString())
                 .clickRegisterButton();
-
-
 
         String expectedResult =
                 data.get("expectedResult").toString();
-
-
 
         if(expectedResult.equals("success")) {
 
@@ -106,21 +87,11 @@ public class RegistrationTest extends BaseTest {
 
                     registrationPage.isRegistrationSuccessful(),
 
-                    "Registration success message was not displayed."
-
-            );
-
-
+                    "Registration success message was not displayed.");
         } else {
-
-
             Assert.assertFalse(
-
                     registrationPage.isRegistrationSuccessful(),
-
-                    "Invalid registration data was accepted."
-
-            );
+                    "Invalid registration data was accepted.");
 
         }
     }

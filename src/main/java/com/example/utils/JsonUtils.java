@@ -12,7 +12,6 @@ public class JsonUtils {
 
     private List<Map<String,Object>> registerData;
 
-
     public JsonUtils(String path) {
 
         try {
@@ -29,7 +28,6 @@ public class JsonUtils {
             throw new RuntimeException(e);
         }
     }
-
     public List<Map<String,Object>> getRegisterData(){
         return registerData;
     }

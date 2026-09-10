@@ -1,6 +1,7 @@
 package com.example.pages;
 
 import com.example.utils.BasePage;
+import com.example.utils.ConfigReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -24,73 +25,74 @@ public class LoginPage extends BasePage {
             By.cssSelector("p.error");
 
 
-    private By accountsOverview =
-            By.xpath("//h1[contains(text(),'Accounts Overview')]");
-
-
-
-    public LoginPage(WebDriver driver){
+    public LoginPage(WebDriver driver) {
 
         super(driver);
 
     }
 
 
+    public LoginPage enterUsername(String user) {
 
-    public LoginPage enterUsername(String user){
-
-        type(username,user);
+        type(username, user);
 
         return this;
-
     }
 
 
+    public LoginPage enterPassword(String pass) {
 
-    public LoginPage enterPassword(String pass){
-
-        type(password,pass);
+        type(password, pass);
 
         return this;
-
     }
 
 
-
-    public LoginPage clickLogin(){
+    public LoginPage clickLogin() {
 
         click(loginButton);
 
         return this;
-
     }
 
 
-
-    public LoginPage login(String user,String pass){
+    // برای تست های معمولی (مثلا negative)
+    public LoginPage login(String user, String pass) {
 
         enterUsername(user);
         enterPassword(pass);
         clickLogin();
 
         return this;
+    }
+
+    public AccountsOverviewPage loginHappyPath() {
+
+        enterUsername(
+                ConfigReader.getUsername()
+        );
+
+        enterPassword(
+                ConfigReader.getPassword()
+        );
+
+        clickLogin();
+
+        waitForUrlContains("overview.htm");
+
+        return new AccountsOverviewPage(driver);
 
     }
 
 
+    public boolean isErrorMessageDisplayed() {
 
-    public boolean isLoginSuccessful(){
-
-        return isDisplayed(accountsOverview);
-
-    }
-    public boolean isErrorMessageDisplayed(){
-
-        return driver.findElement(errorMessage).isDisplayed();
+        return isDisplayed(errorMessage);
 
     }
 
-    public String getErrorMessage(){
+
+    public String getErrorMessage() {
 
         return getText(errorMessage);
 

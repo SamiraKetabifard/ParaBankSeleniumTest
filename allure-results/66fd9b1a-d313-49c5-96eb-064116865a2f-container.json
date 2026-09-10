@@ -1,0 +1,1 @@
+{"uuid":"66fd9b1a-d313-49c5-96eb-064116865a2f","name":"updateContactInfoTest","children":["b0157b25-b01b-4068-8eec-3b0116788a7d"],"befores":[{"name":"updateContactData","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1788967890809,"stop":1788967890812}],"afters":[],"start":1788967890804,"stop":1788967905295}
