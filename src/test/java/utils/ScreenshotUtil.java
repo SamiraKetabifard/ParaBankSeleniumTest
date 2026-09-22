@@ -14,17 +14,13 @@ public class ScreenshotUtil {
             System.out.println("Driver is null");
             return;
         }
-
         byte[] screenshot =
                 ((TakesScreenshot) driver)
                         .getScreenshotAs(OutputType.BYTES);
-
         Allure.addAttachment(
                 "Failure Screenshot",
                 "image/png",
                 new ByteArrayInputStream(screenshot),
-                ".png"
-        );
-
+                ".png");
     }
 }

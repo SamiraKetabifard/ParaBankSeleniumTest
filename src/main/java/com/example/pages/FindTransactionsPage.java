@@ -41,13 +41,12 @@ public class FindTransactionsPage extends BasePage {
 
     private By findByAmountButton =
             By.id("findByAmount");
-
+    private By transactionResults =
+            By.cssSelector("#transactionTable");
 
     public FindTransactionsPage(WebDriver driver) {
         super(driver);
     }
-
-
     public void open() {
         click(findTransactions);
 
@@ -58,14 +57,10 @@ public class FindTransactionsPage extends BasePage {
         waitForVisibility(toDate);
         waitForVisibility(amount);
     }
-
-
     public void selectAccountByIndex(int index) {
-
         WebElement element =
                 wait.until(ExpectedConditions.presenceOfElementLocated(
                         accountDropdown));
-
         Select select = new Select(element);
 
         wait.until(driver ->
@@ -73,59 +68,37 @@ public class FindTransactionsPage extends BasePage {
 
         select.selectByIndex(index);
     }
-
-
     public void enterTransactionId(String value) {
         type(transactionId, value);
     }
-
-
     public void clickFindByTransactionId() {
         click(findByIdButton);
     }
-
-
     public void enterDate(String value) {
         type(transactionDate, value);
     }
-
-
     public void clickFindByDate() {
         click(findByDateButton);
     }
-
-
     public void enterFromDate(String value) {
         type(fromDate, value);
     }
-
-
     public void enterToDate(String value) {
         type(toDate, value);
     }
-
-
     public void clickFindByDateRange() {
         click(findByDateRangeButton);
     }
-
-
     public void enterAmount(String value) {
         type(amount, value);
     }
-
-
     public void clickFindByAmount() {
         click(findByAmountButton);
     }
-    private By transactionResults =
-            By.cssSelector("#transactionTable");
-
     public boolean isResultDisplayed() {
         try {
             return wait.until(
-                    ExpectedConditions.visibilityOfElementLocated(transactionResults)
-            ).isDisplayed();
+                    ExpectedConditions.visibilityOfElementLocated(transactionResults)).isDisplayed();
         } catch (Exception e) {
             return false;
         }

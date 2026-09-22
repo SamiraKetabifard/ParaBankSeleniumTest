@@ -9,15 +9,10 @@ public class ConfigReader {
     private static Properties properties = new Properties();
     static {
         try {
-
             FileInputStream file = new FileInputStream(
-                    "src/test/resources/config.properties"
-            );
-
+                    "src/test/resources/config.properties");
             properties.load(file);
-
         } catch (IOException e) {
-
             throw new RuntimeException("Cannot load config.properties");
         }
     }
@@ -26,12 +21,8 @@ public class ConfigReader {
     }
     public static String getUsername() {
         return properties.getProperty("username");
-
     }
     public static String getPassword() {
-
         return properties.getProperty("password");
-
     }
-
 }
