@@ -26,8 +26,7 @@ public class AccountsOverviewPage extends BasePage {
         click(logout);
     }
     public boolean isLogoutSuccessful() {
-        return driver.getCurrentUrl()
-                .contains("index.htm");
+        return driver.getCurrentUrl().contains("index.htm");
     }
     public String getCurrentPageUrl() {
         return driver.getCurrentUrl();

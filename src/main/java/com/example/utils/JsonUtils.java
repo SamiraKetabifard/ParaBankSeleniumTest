@@ -12,7 +12,6 @@ public class JsonUtils {
     private List<Map<String,Object>> registerData;
 
     public JsonUtils(String path) {
-
         try {
             FileReader reader = new FileReader(path);
             Type type = new TypeToken<Map<String,List<Map<String,Object>>>>(){}.getType();

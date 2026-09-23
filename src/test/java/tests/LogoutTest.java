@@ -11,24 +11,12 @@ public class LogoutTest extends BaseTest {
 
     @Test
     public void verifyLogout() {
+        LoginPage loginPage = new LoginPage(driver);
+        AccountsOverviewPage accountsPage = loginPage.loginHappyPath();
 
-
-        LoginPage loginPage =
-                new LoginPage(driver);
-
-        AccountsOverviewPage accountsPage =
-                loginPage.loginHappyPath();
-
-        Assert.assertTrue(
-                accountsPage.isAccountsOverviewDisplayed(),
-                "Login failed");
+        Assert.assertTrue(accountsPage.isAccountsOverviewDisplayed(), "Login failed");
         accountsPage.clickLogout();
 
-        Assert.assertTrue(
-                accountsPage.isLogoutSuccessful(),
-                "Logout failed"
-        );
-
+        Assert.assertTrue(accountsPage.isLogoutSuccessful(), "Logout failed");
     }
-
 }

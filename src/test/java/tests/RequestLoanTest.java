@@ -11,25 +11,11 @@ public class RequestLoanTest extends BaseTest {
     @Test
     public void validLoanTest() {
 
-        LoginPage loginPage =
-                new LoginPage(driver);
-
+        LoginPage loginPage = new LoginPage(driver);
         loginPage.loginHappyPath();
-
-        RequestLoanPage loanPage =
-                new RequestLoanPage(driver);
-
+        RequestLoanPage loanPage = new RequestLoanPage(driver);
         loanPage.goToRequestLoan();
-
-        loanPage.requestLoan(
-                "1000",
-                "100",
-                0
-        );
-
-        Assert.assertTrue(
-                loanPage.isLoanApproved(),
-                "Loan should be approved"
-        );
+        loanPage.requestLoan("1000", "100", 0);
+        Assert.assertTrue(loanPage.isLoanApproved(), "Loan should be approved");
     }
 }

@@ -9,40 +9,18 @@ import org.openqa.selenium.support.ui.Select;
 
 public class FindTransactionsPage extends BasePage {
 
-    private By findTransactions =
-            By.linkText("Find Transactions");
-
-    private By accountDropdown =
-            By.id("accountId");
-
-    private By transactionId =
-            By.id("transactionId");
-
-    private By findByIdButton =
-            By.id("findById");
-
-    private By transactionDate =
-            By.id("transactionDate");
-
-    private By findByDateButton =
-            By.id("findByDate");
-
-    private By fromDate =
-            By.id("fromDate");
-
-    private By toDate =
-            By.id("toDate");
-
-    private By findByDateRangeButton =
-            By.id("findByDateRange");
-
-    private By amount =
-            By.id("amount");
-
-    private By findByAmountButton =
-            By.id("findByAmount");
-    private By transactionResults =
-            By.cssSelector("#transactionTable");
+    private By findTransactions = By.linkText("Find Transactions");
+    private By accountDropdown = By.id("accountId");
+    private By transactionId = By.id("transactionId");
+    private By findByIdButton = By.id("findById");
+    private By transactionDate = By.id("transactionDate");
+    private By findByDateButton = By.id("findByDate");
+    private By fromDate = By.id("fromDate");
+    private By toDate = By.id("toDate");
+    private By findByDateRangeButton = By.id("findByDateRange");
+    private By amount = By.id("amount");
+    private By findByAmountButton = By.id("findByAmount");
+    private By transactionResults = By.cssSelector("#transactionTable");
 
     public FindTransactionsPage(WebDriver driver) {
         super(driver);
@@ -58,14 +36,10 @@ public class FindTransactionsPage extends BasePage {
         waitForVisibility(amount);
     }
     public void selectAccountByIndex(int index) {
-        WebElement element =
-                wait.until(ExpectedConditions.presenceOfElementLocated(
-                        accountDropdown));
+        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(accountDropdown));
         Select select = new Select(element);
 
-        wait.until(driver ->
-                select.getOptions().size() > index);
-
+        wait.until(driver -> select.getOptions().size() > index);
         select.selectByIndex(index);
     }
     public void enterTransactionId(String value) {
@@ -97,8 +71,7 @@ public class FindTransactionsPage extends BasePage {
     }
     public boolean isResultDisplayed() {
         try {
-            return wait.until(
-                    ExpectedConditions.visibilityOfElementLocated(transactionResults)).isDisplayed();
+            return wait.until(ExpectedConditions.visibilityOfElementLocated(transactionResults)).isDisplayed();
         } catch (Exception e) {
             return false;
         }

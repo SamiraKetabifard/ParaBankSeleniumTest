@@ -132,7 +132,6 @@ public class BillPayPage extends BasePage {
         enterAmount(paymentAmount);
 
         selectFromAccountByIndex(accountIndex);
-
         clickSendPayment();
     }
     public boolean isPaymentSuccessful() {
