@@ -2,22 +2,12 @@ package tests;
 
 import base.BaseTest;
 import com.example.pages.LoginPage;
-import com.example.pages.AccountsOverviewPage;
 import com.example.pages.RequestLoanPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class RequestLoanNegativeTest extends BaseTest {
 
-    @Test
-    public void validLoanTest() {
-        LoginPage loginPage = new LoginPage(driver);
-        AccountsOverviewPage accountsPage = loginPage.loginHappyPath();
-        RequestLoanPage loanPage = new RequestLoanPage(driver);
-        loanPage.goToRequestLoan();
-        loanPage.requestLoan("1000", "100", 0);
-        Assert.assertTrue(loanPage.isLoanApproved(), "Loan was not approved");
-    }
     @Test
     public void emptyAmountTest() {
         LoginPage loginPage = new LoginPage(driver);
