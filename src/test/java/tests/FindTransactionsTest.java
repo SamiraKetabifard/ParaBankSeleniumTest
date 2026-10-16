@@ -6,7 +6,7 @@ import com.example.pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class FindTransactionsTest extends BaseTest {
+public class FindTransactionsTest extends BaseTest{
 
     private void openFindTransactions() {
         LoginPage loginPage = new LoginPage(driver);

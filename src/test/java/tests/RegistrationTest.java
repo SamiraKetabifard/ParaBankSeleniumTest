@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 @Listeners(listeners.TestListener.class)
-public class RegistrationTest extends BaseTest {
+public class RegistrationTest extends BaseTest{
 
     private RegistrationPage registrationPage;
 
@@ -24,18 +24,18 @@ public class RegistrationTest extends BaseTest {
         return "user" + System.currentTimeMillis();
     }
     @DataProvider(name = "registerData")
-    public Object[][] registerData() {
+    public Object[][] registerData(){
         JsonUtils json = new JsonUtils("src/test/resources/Register.json");
         List<Map<String,Object>> data = json.getRegisterData();
         Object[][] result = new Object[data.size()][1];
 
-        for(int i = 0; i < data.size(); i++) {
+        for(int i = 0; i < data.size(); i++){
             result[i][0] = data.get(i);
         }
         return result;
     }
     @Test(dataProvider = "registerData")
-    public void verifyRegistration(Map<String,Object> data) {
+    public void verifyRegistration(Map<String,Object> data){
         System.out.println("Running test case: " + data.get("testCase"));
         registrationPage.clickRegisterLink().fillRegistrationForm(
                         data.get("firstName").toString(),

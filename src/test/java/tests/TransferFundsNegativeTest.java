@@ -6,7 +6,7 @@ import com.example.pages.TransferFundsPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TransferFundsNegativeTest extends BaseTest {
+public class TransferFundsNegativeTest extends BaseTest{
 
     @Test
     public void emptyAmountTest() {

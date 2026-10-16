@@ -6,7 +6,7 @@ import com.example.pages.RequestLoanPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class RequestLoanTest extends BaseTest {
+public class RequestLoanTest extends BaseTest{
 
     @Test
     public void validLoanTest() {

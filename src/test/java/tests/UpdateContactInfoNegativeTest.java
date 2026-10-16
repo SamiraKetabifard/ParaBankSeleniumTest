@@ -6,7 +6,7 @@ import com.example.pages.UpdateContactInfoPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class UpdateContactInfoNegativeTest extends BaseTest {
+public class UpdateContactInfoNegativeTest extends BaseTest{
     @Test
     public void emptyFirstNameTest() {
         LoginPage loginPage = new LoginPage(driver);

@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 public class TransferFundsTest extends BaseTest{
 
     @Test
-    public void transferValidTest() {
+    public void transferValidTest(){
         // Login
         LoginPage loginPage = new LoginPage(driver);
         AccountsOverviewPage accountsPage = loginPage.loginHappyPath();

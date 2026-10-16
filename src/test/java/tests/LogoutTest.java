@@ -1,6 +1,5 @@
 package tests;
 
-
 import base.BaseTest;
 import com.example.pages.AccountsOverviewPage;
 import com.example.pages.LoginPage;

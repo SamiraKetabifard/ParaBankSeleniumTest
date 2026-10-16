@@ -8,7 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class OpenAccountTest extends BaseTest {
+public class OpenAccountTest extends BaseTest{
     @DataProvider(name="accountTypes")
     public Object[][] accountTypes(){
         return new Object[][]{

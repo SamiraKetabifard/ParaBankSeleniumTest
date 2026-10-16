@@ -25,7 +25,7 @@ public class BillPayTest extends BaseTest {
         Assert.assertTrue(billPayPage.isPaymentSuccessful(), "Bill payment should be successful");
     }
     @Test
-    public void emptyAmountTest() {
+    public void emptyAmountTest(){
         openBillPay();
         BillPayPage billPayPage = new BillPayPage(driver);
         billPayPage.payBill("hani", "Main Street", "Tehran",

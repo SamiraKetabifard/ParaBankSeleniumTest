@@ -6,7 +6,7 @@ import com.example.pages.RequestLoanPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class RequestLoanNegativeTest extends BaseTest {
+public class RequestLoanNegativeTest extends BaseTest{
 
     @Test
     public void emptyAmountTest() {
@@ -60,7 +60,7 @@ public class RequestLoanNegativeTest extends BaseTest {
         RequestLoanPage loanPage = new RequestLoanPage(driver);
         loanPage.goToRequestLoan();
         loanPage.requestLoan("-100", "-100", 0);
-        Assert.assertTrue(
-                loanPage.hasLargeAmountError(), "Expected loan amount error for negative values");
+        Assert.assertTrue(loanPage.hasLargeAmountError(),
+                "Expected loan amount error for negative values");
     }
 }

@@ -7,7 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class UpdateContactInfoTest extends BaseTest {
+public class UpdateContactInfoTest extends BaseTest{
 
     @DataProvider(name = "updateContactData")
     public Object[][] updateContactData() {
@@ -32,8 +32,7 @@ public class UpdateContactInfoTest extends BaseTest {
         // go to update contact info page
         driver.get("https://parabank.parasoft.com/parabank/updateprofile.htm");
         UpdateContactInfoPage updatePage = new UpdateContactInfoPage(driver);
-        updatePage.updateProfile(firstName, lastName, address,
-                city, state, zipCode, phone);
+        updatePage.updateProfile(firstName, lastName, address, city, state, zipCode, phone);
         Assert.assertTrue(updatePage.isProfileUpdated(), "Profile was not updated successfully");
     }
 }

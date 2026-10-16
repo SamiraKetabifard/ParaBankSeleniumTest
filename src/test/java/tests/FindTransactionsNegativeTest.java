@@ -6,7 +6,7 @@ import com.example.pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class FindTransactionsNegativeTest extends BaseTest {
+public class FindTransactionsNegativeTest extends BaseTest{
 
     private void openFindTransactions() {
         LoginPage loginPage = new LoginPage(driver);
@@ -22,7 +22,7 @@ public class FindTransactionsNegativeTest extends BaseTest {
         findPage.selectAccountByIndex(0);
         findPage.enterTransactionId("dd99d9");
         findPage.clickFindByTransactionId();
-        Assert.assertFalse(findPage.isResultDisplayed(), "Invalid Transaction ID should not return a result");
+        Assert.assertFalse(findPage.isResultDisplayed(),"Invalid Transaction ID should not return a result");
     }
     @Test
     public void emptyTransactionId() {
@@ -31,7 +31,7 @@ public class FindTransactionsNegativeTest extends BaseTest {
         findPage.selectAccountByIndex(0);
         findPage.enterTransactionId("");
         findPage.clickFindByTransactionId();
-        Assert.assertFalse(findPage.isResultDisplayed(), "Empty Transaction ID should not return a result");
+        Assert.assertFalse(findPage.isResultDisplayed(),"Empty Transaction ID should not return a result");
     }
     @Test
     public void invalidAmount() {

@@ -15,8 +15,7 @@ public class LoginNegativeTest extends BaseTest {
         return excel.getSheetDataAsArray();
     }
     @Test(dataProvider = "loginNegativeData")
-    public void invalidLoginTest(String username, String password,
-                                 String expectedResult, String description){
+    public void invalidLoginTest(String username, String password, String expectedResult, String description){
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login(username, password);
         Assert.assertTrue(loginPage.isErrorMessageDisplayed(),
