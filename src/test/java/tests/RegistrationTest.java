@@ -36,7 +36,7 @@ public class RegistrationTest extends BaseTest{
     }
     @Test(dataProvider = "registerData")
     public void verifyRegistration(Map<String,Object> data){
-        System.out.println("Running test case: " + data.get("testCase"));
+        //System.out.println("Running test case: " + data.get("testCase"));
         registrationPage.clickRegisterLink().fillRegistrationForm(
                         data.get("firstName").toString(),
                         data.get("lastName").toString(),
