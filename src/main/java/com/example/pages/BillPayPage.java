@@ -9,61 +9,28 @@ import org.openqa.selenium.support.ui.Select;
 
 public class BillPayPage extends BasePage {
 
-    private By billPay =
-            By.linkText("Bill Pay");
-
-    private By payeeName =
-            By.name("payee.name");
-
-    private By address =
-            By.name("payee.address.street");
-
-    private By city =
-            By.name("payee.address.city");
-
-    private By state =
-            By.name("payee.address.state");
-
-    private By zipCode =
-            By.name("payee.address.zipCode");
-
-    private By phone =
-            By.name("payee.phoneNumber");
-
-    private By accountNumber =
-            By.name("payee.accountNumber");
-
-    private By verifyAccount =
-            By.name("verifyAccount");
-
-    private By amount =
-            By.name("amount");
-
-    private By fromAccount =
-            By.name("fromAccountId");
-
-    private By sendPaymentButton =
-            By.xpath("//input[@type='button' and @value='Send Payment']");
-
-    private By successMessage =
-            By.xpath("//p[contains(text(),'Bill Payment to')]");
-
-    private By amountEmptyError =
-            By.id("validationModel-amount-empty");
-
-    private By invalidAccountError =
-            By.id("validationModel-account-invalid");
-
-    private By internalError =
-            By.xpath("//p[contains(text(),'An internal error has occurred')]");
-
+    private By billPay = By.linkText("Bill Pay");
+    private By payeeName = By.name("payee.name");
+    private By address = By.name("payee.address.street");
+    private By city = By.name("payee.address.city");
+    private By state = By.name("payee.address.state");
+    private By zipCode = By.name("payee.address.zipCode");
+    private By phone = By.name("payee.phoneNumber");
+    private By accountNumber = By.name("payee.accountNumber");
+    private By verifyAccount = By.name("verifyAccount");
+    private By amount = By.name("amount");
+    private By fromAccount = By.name("fromAccountId");
+    private By sendPaymentButton = By.xpath("//input[@type='button' and @value='Send Payment']");
+    private By successMessage = By.xpath("//p[contains(text(),'Bill Payment to')]");
+    private By amountEmptyError = By.id("validationModel-amount-empty");
+    private By invalidAccountError = By.id("validationModel-account-invalid");
+    private By internalError = By.xpath("//p[contains(text(),'An internal error has occurred')]");
 
     public BillPayPage(WebDriver driver) {
         super(driver);
     }
     public void goToBillPay() {
         click(billPay);
-
         waitForVisibility(payeeName);
         waitForVisibility(amount);
         waitForVisibility(fromAccount);
@@ -96,31 +63,21 @@ public class BillPayPage extends BasePage {
         type(amount, value);
     }
     public void selectFromAccountByIndex(int index) {
-
-        WebElement element =
-                wait.until(ExpectedConditions.presenceOfElementLocated(fromAccount));
+        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(fromAccount));
         Select select = new Select(element);
         select.selectByIndex(index);
     }
     /*public void selectFromAccountByIndex(int index) {
-
-        WebElement element =
-                wait.until(ExpectedConditions.presenceOfElementLocated(fromAccount));
-
+        WebElement element =wait.until(ExpectedConditions.presenceOfElementLocated(fromAccount));
         Select select = new Select(element);
-
-        wait.until(driver ->
-                select.getOptions().size() > index);
-
+        wait.until(driver -> select.getOptions().size() > index);
         select.selectByIndex(index);
     }*/
     public void clickSendPayment() {
         click(sendPaymentButton);
     }
-    public void payBill(String payee, String street, String cityName,
-            String stateName, String zip, String phoneNumber, String account,
-            String verify, String paymentAmount, int accountIndex) {
-
+    public void payBill(String payee, String street, String cityName, String stateName, String zip,
+                        String phoneNumber, String account, String verify, String paymentAmount, int accountIndex) {
         enterPayeeName(payee);
         enterAddress(street);
         enterCity(cityName);

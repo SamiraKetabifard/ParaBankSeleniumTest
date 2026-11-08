@@ -40,28 +40,18 @@ public class AccountsOverviewPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(accountTable));
     }
     private List<WebElement> getAccountRows() {
-
         // Wait until account rows are actually loaded
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#accountTable tbody tr td a")));
         return driver.findElements(accountRows);
     }
     public double getBalanceByRowIndex(int rowIndex) {
-        List<WebElement> cells =
-                getAccountRows()
-                        .get(rowIndex)
-                        .findElements(By.tagName("td"));
+        List<WebElement> cells = getAccountRows().get(rowIndex).findElements(By.tagName("td"));
         String balanceText = cells.get(1).getText();
-        return Double.parseDouble(
-                balanceText
-                        .replace("$", "")
-                        .replace(",", "")
-                        .trim());
+        return Double.parseDouble(balanceText.replace("$", "")
+                .replace(",", "").trim());
     }
     public String getAccountIdByRowIndex(int rowIndex) {
-        List<WebElement> cells =
-                getAccountRows()
-                        .get(rowIndex)
-                        .findElements(By.tagName("td"));
+        List<WebElement> cells = getAccountRows().get(rowIndex).findElements(By.tagName("td"));
         return cells.get(0).getText();
     }
     public int getAccountCount() {
